@@ -1,2 +1,2 @@
-# TalTech-Objektorienteeritud-programmeerimine
-School repos
+# TalTech Objektorienteeritud programmeerimine
+School repos for Objektorienteeritud programmeerimine
