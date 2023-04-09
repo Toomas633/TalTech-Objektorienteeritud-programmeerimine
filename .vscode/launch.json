@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "kirsing_kodu_4",
+            "request": "launch",
+            "mainClass": "kirsing_kodu_4",
+            "projectName": "TalTech-Objektorienteeritud-programmeerimine_c7f52ffb"
+        },
+        {
+            "type": "java",
             "name": "App",
             "request": "launch",
             "mainClass": "App",
