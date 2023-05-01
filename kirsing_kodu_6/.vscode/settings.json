@@ -12,6 +12,15 @@
 		"c:/Program Files/JavaFX/sdk-20//lib/javafx.media.jar",
 		"c:/Program Files/JavaFX/sdk-20//lib/javafx.swing.jar",
 		"c:/Program Files/JavaFX/sdk-20//lib/javafx.web.jar",
-		"c:/Program Files/JavaFX/sdk-20//lib/javafx-swt.ja"
+		"c:/Program Files/JavaFX/sdk-20//lib/javafx-swt.ja",
+		"/home/toomas/Programs/javafx/lib/javafx.base.jar",
+		"/home/toomas/Programs/javafx/lib/javafx.controls.jar",
+		"/home/toomas/Programs/javafx/lib/javafx.fxml.jar",
+		"/home/toomas/Programs/javafx/lib/javafx.graphics.jar",
+		"/home/toomas/Programs/javafx/lib/javafx.media.jar",
+		"/home/toomas/Programs/javafx/lib/javafx.swing.jar",
+		"/home/toomas/Programs/javafx/lib/javafx.web.jar",
+		"/home/toomas/Programs/javafx/lib/javafx-swt.ja"
+		
 	]
 }
