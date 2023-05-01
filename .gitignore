@@ -47,6 +47,5 @@ replay_pid*
 
 #JavaFX
 JavaFX/*
-!bin/*
 
 # End of https://www.toptal.com/developers/gitignore/api/java,visualstudiocode
