@@ -1,9 +1,6 @@
 # Created by https://www.toptal.com/developers/gitignore/api/java,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,visualstudiocode
 
-#JavaFX
-JavaFX/*
-bin/*
 ### Java ###
 # Compiled class file
 *.class
@@ -47,5 +44,9 @@ replay_pid*
 # Ignore all local history of files
 .history
 .ionide
+
+#JavaFX
+JavaFX/*
+!bin/*
 
 # End of https://www.toptal.com/developers/gitignore/api/java,visualstudiocode
