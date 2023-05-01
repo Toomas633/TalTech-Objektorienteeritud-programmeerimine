@@ -2,13 +2,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "java",
-            "name": "App",
-            "request": "launch",
-            "mainClass": "com.example.App",
-            "projectName": "TalTech-Objektorienteeritud-programmeerimine_c7f52ffb"
-        },
-        {
             "vmArgs": "--module-path \"JavaFX/sdk-20//lib\" --add-modules javafx.controls,javafx.fxml",
             "type": "java",
             "name": "Launch Current File",

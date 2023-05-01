@@ -1,4 +1,4 @@
-package com.example;
+package com.kirsing_kodu_6;
 
 import java.util.ArrayList;
 import java.util.List;
