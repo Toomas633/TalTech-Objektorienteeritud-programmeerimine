@@ -3,9 +3,24 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "com.example.App",
+            "projectName": "TalTech-Objektorienteeritud-programmeerimine_c7f52ffb"
+        },
+        {
+            "vmArgs": "--module-path \"JavaFX/sdk-20//lib\" --add-modules javafx.controls,javafx.fxml",
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
+        },
+        {
+            "vmArgs": "--module-path \"JavaFX/sdk-20//lib\" --add-modules javafx.controls,javafx.fxml",
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App"
         }
     ]
 }

@@ -1,11 +1,8 @@
 package com.example;
 
 import java.util.ArrayList;
-import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Random;
-
-import javax.net.ssl.TrustManagerFactory;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
