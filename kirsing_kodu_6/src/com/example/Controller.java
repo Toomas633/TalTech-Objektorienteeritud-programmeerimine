@@ -1,8 +1,11 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Random;
+
+import javax.net.ssl.TrustManagerFactory;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -92,7 +95,7 @@ public class Controller {
             if (button.getText().isEmpty() && !Läbi) {
                 if (kasutajaKord) {
                     button.setText("X"); //Kui on mängija kord näita nupul X
-                    disableButtons(true); //Lukusta nupud et kasutaja ei saaks rohkem käike teha
+                    button.setDisable(true); //Lukusta valitud nupp et seda ei saaks enam vajutada
                 }
                 kasutajaKord = !kasutajaKord; //Peale käiku vaheta kelle kord on
                 KontrolliLõppu(); //Peale igat käiku kontrolli kas mäng on läbi!
@@ -100,7 +103,6 @@ public class Controller {
             if (!Läbi) {
                 arvutiKäik(); //Kutsu arvuti käik
                 kasutajaKord = !kasutajaKord;
-                disableButtons(false); //Ava nupud kasutajale peale arvuti käiku
                 KontrolliLõppu();
             }
         }
@@ -205,34 +207,42 @@ public class Controller {
         }
         if (Button1.getText().equals("X") && Button16.getText().isEmpty()) { //Kontrolli vastastikuseid mängija nurki
             Button16.setText("O");
+            Button16.setDisable(true); //Lukusta nupp et seda ei saaks kasutaja valida
             return;
         }
         if (Button4.getText().equals("X") && Button13.getText().isEmpty()) {
             Button13.setText("O");
+            Button13.setDisable(true);
             return;
         }
         if (Button13.getText().equals("X") && Button4.getText().isEmpty()) {
             Button4.setText("O");
+            Button4.setDisable(true);
             return;
         }
         if (Button16.getText().equals("X") && Button1.getText().isEmpty()) {
             Button1.setText("O");
+            Button1.setDisable(true);
             return;
         }
         if (Button6.getText().isEmpty()) { //Kui keskmine ruut on vaba täida see
             Button6.setText("O");
+            Button6.setDisable(true);
             return;
         }
         if (Button7.getText().isEmpty()) {
             Button7.setText("O");
+            Button7.setDisable(true);
             return;
         }
         if (Button10.getText().isEmpty()) {
             Button10.setText("O");
+            Button10.setDisable(true);
             return;
         }
         if (Button11.getText().isEmpty()) {
             Button11.setText("O");
+            Button11.setDisable(true);
             return;
         }
         List<Button> emptyCorners = new ArrayList<>(); //Otsi tühje nurki
@@ -243,6 +253,7 @@ public class Controller {
         if (!emptyCorners.isEmpty()) {
             int index = (int) (Math.random() * emptyCorners.size()); //Täida tühi nurk suvaliselt
             emptyCorners.get(index).setText("O");
+            emptyCorners.get(index).setDisable(true);
             return;
         }
         List<Button> emptyButtons = new ArrayList<>(); //Kui kõik eelnevad ei tööta tee suvaline käik
@@ -265,177 +276,218 @@ public class Controller {
         Random random = new Random(System.currentTimeMillis()); //Vali suvaline ruut tühjadest
         Button selectedButton = emptyButtons.get(random.nextInt(emptyButtons.size()));
         selectedButton.setText("O");
+        selectedButton.setDisable(true);
     }
 
     private boolean blockWinningMove(String märk) {
         //Kontrolli 1st rida
         if (Button1.getText().equals(märk) && Button2.getText().equals(märk) && Button3.getText().equals(märk) && Button4.getText().equals("")) {
             Button4.setText("O");
+            Button4.setDisable(true); //Lukusta nupp et seda ei saaks kasutaja valida
             return true;
         }
         if (Button1.getText().equals(märk) && Button2.getText().equals(märk) && Button3.getText().equals("") && Button4.getText().equals(märk)) {
             Button3.setText("O");
+            Button3.setDisable(true);
             return true;
         }
         if (Button1.getText().equals(märk) && Button2.getText().equals("") && Button3.getText().equals(märk) && Button4.getText().equals(märk)) {
             Button2.setText("O");
+            Button2.setDisable(true);
             return true;
         }
         if (Button1.getText().equals("") && Button2.getText().equals(märk) && Button3.getText().equals(märk) && Button4.getText().equals(märk)) {
             Button1.setText("O");
+            Button1.setDisable(true);
             return true;
         }
         //Kontrolli 2st rida
         if (Button5.getText().equals(märk) && Button6.getText().equals(märk) && Button7.getText().equals(märk) && Button8.getText().equals("")) {
             Button8.setText("O");
+            Button8.setDisable(true);
             return true;
         }
         if (Button5.getText().equals(märk) && Button6.getText().equals(märk) && Button7.getText().equals("") && Button8.getText().equals(märk)) {
             Button7.setText("O");
+            Button7.setDisable(true);
             return true;
         }
         if (Button5.getText().equals(märk) && Button6.getText().equals("") && Button7.getText().equals(märk) && Button8.getText().equals(märk)) {
             Button6.setText("O");
+            Button6.setDisable(true);
             return true;
         }
         if (Button5.getText().equals("") && Button6.getText().equals(märk) && Button7.getText().equals(märk) && Button8.getText().equals(märk)) {
             Button5.setText("O");
+            Button5.setDisable(true);
             return true;
         }
         //Kontrolli 3ndat rida
         if (Button9.getText().equals(märk) && Button10.getText().equals(märk) && Button11.getText().equals(märk) && Button12.getText().equals("")) {
             Button12.setText("O");
+            Button12.setDisable(true);
             return true;
         }
         if (Button9.getText().equals(märk) && Button10.getText().equals(märk) && Button11.getText().equals("") && Button12.getText().equals(märk)) {
             Button11.setText("O");
+            Button11.setDisable(true);
             return true;
         }
         if (Button9.getText().equals(märk) && Button10.getText().equals("") && Button11.getText().equals(märk) && Button12.getText().equals(märk)) {
             Button10.setText("O");
+            Button10.setDisable(true);
             return true;
         }
         if (Button9.getText().equals("") && Button10.getText().equals(märk) && Button11.getText().equals(märk) && Button12.getText().equals(märk)) {
             Button9.setText("O");
+            Button9.setDisable(true);
             return true;
         }
         //Kontrolli 4ndat rida
         if (Button13.getText().equals(märk) && Button14.getText().equals(märk) && Button15.getText().equals(märk) && Button16.getText().equals("")) {
             Button16.setText("O");
+            Button16.setDisable(true);
             return true;
         }
         if (Button13.getText().equals(märk) && Button14.getText().equals(märk) && Button15.getText().equals("") && Button16.getText().equals(märk)) {
             Button15.setText("O");
+            Button15.setDisable(true);
             return true;
         }
         if (Button13.getText().equals(märk) && Button14.getText().equals("") && Button15.getText().equals(märk) && Button16.getText().equals(märk)) {
             Button14.setText("O");
+            Button14.setDisable(true);
             return true;
         }
         if (Button13.getText().equals("") && Button14.getText().equals(märk) && Button15.getText().equals(märk) && Button16.getText().equals(märk)) {
             Button13.setText("O");
+            Button13.setDisable(true);
             return true;
         }
         //Kontrolli 1st veergu
         if (Button1.getText().equals(märk) && Button5.getText().equals(märk) && Button9.getText().equals(märk) && Button13.getText().equals("")) {
             Button13.setText("O");
+            Button13.setDisable(true);
             return true;
         }
         if (Button1.getText().equals(märk) && Button5.getText().equals(märk) && Button9.getText().equals("") && Button13.getText().equals(märk)) {
             Button9.setText("O");
+            Button9.setDisable(true);
             return true;
         }
         if (Button1.getText().equals(märk) && Button5.getText().equals("") && Button9.getText().equals(märk) && Button13.getText().equals(märk)) {
             Button5.setText("O");
+            Button5.setDisable(true);
             return true;
         }
         if (Button1.getText().equals("") && Button5.getText().equals(märk) && Button9.getText().equals(märk) && Button13.getText().equals(märk)) {
             Button1.setText("O");
+            Button1.setDisable(true);
             return true;
         }
         //Kontrolli 2st veergu
         if (Button2.getText().equals(märk) && Button6.getText().equals(märk) && Button10.getText().equals(märk) && Button14.getText().equals("")) {
             Button14.setText("O");
+            Button14.setDisable(true);
             return true;
         }
         if (Button2.getText().equals(märk) && Button6.getText().equals(märk) && Button10.getText().equals("") && Button14.getText().equals(märk)) {
             Button10.setText("O");
+            Button10.setDisable(true);
             return true;
         }
         if (Button2.getText().equals(märk) && Button6.getText().equals("") && Button10.getText().equals(märk) && Button14.getText().equals(märk)) {
             Button6.setText("O");
+            Button6.setDisable(true);
             return true;
         }
         if (Button2.getText().equals("") && Button6.getText().equals(märk) && Button10.getText().equals(märk) && Button14.getText().equals(märk)) {
             Button2.setText("O");
+            Button2.setDisable(true);
             return true;
         }
         //Kontrolli 3ndat veergu
         if (Button3.getText().equals(märk) && Button7.getText().equals(märk) && Button11.getText().equals(märk) && Button15.getText().equals("")) {
             Button15.setText("O");
+            Button15.setDisable(true);
             return true;
         }
         if (Button3.getText().equals(märk) && Button7.getText().equals(märk) && Button11.getText().equals("") && Button15.getText().equals(märk)) {
             Button11.setText("O");
+            Button11.setDisable(true);
             return true;
         }
         if (Button3.getText().equals(märk) && Button7.getText().equals("") && Button11.getText().equals(märk) && Button15.getText().equals(märk)) {
             Button7.setText("O");
+            Button7.setDisable(true);
             return true;
         }
         if (Button3.getText().equals("") && Button7.getText().equals(märk) && Button11.getText().equals(märk) && Button15.getText().equals(märk)) {
             Button3.setText("O");
+            Button3.setDisable(true);
             return true;
         }
         //Kontrolli 4ndat veergu
         if (Button4.getText().equals(märk) && Button8.getText().equals(märk) && Button12.getText().equals(märk) && Button16.getText().equals("")) {
             Button16.setText("O");
+            Button16.setDisable(true);
             return true;
         }
         if (Button4.getText().equals(märk) && Button8.getText().equals(märk) && Button12.getText().equals("") && Button16.getText().equals(märk)) {
             Button12.setText("O");
+            Button12.setDisable(true);
             return true;
         }
         if (Button4.getText().equals(märk) && Button8.getText().equals("") && Button12.getText().equals(märk) && Button16.getText().equals(märk)) {
             Button8.setText("O");
+            Button8.setDisable(true);
             return true;
         }
         if (Button4.getText().equals("") && Button8.getText().equals(märk) && Button12.getText().equals(märk) && Button16.getText().equals(märk)) {
             Button4.setText("O");
+            Button4.setDisable(true);
             return true;
         }
         //Kontrolli vasak-parem diagonaali
         if (Button1.getText().equals(märk) && Button6.getText().equals(märk) && Button11.getText().equals(märk) && Button16.getText().equals("")) {
             Button16.setText("O");
+            Button16.setDisable(true);
             return true;
         }
         if (Button1.getText().equals(märk) && Button6.getText().equals(märk) && Button11.getText().equals("") && Button16.getText().equals(märk)) {
             Button11.setText("O");
+            Button11.setDisable(true);
             return true;
         }
         if (Button1.getText().equals(märk) && Button6.getText().equals("") && Button11.getText().equals(märk) && Button16.getText().equals(märk)) {
             Button6.setText("O");
+            Button6.setDisable(true);
             return true;
         }
         if (Button1.getText().equals("") && Button6.getText().equals(märk) && Button11.getText().equals(märk) && Button16.getText().equals(märk)) {
             Button1.setText("O");
+            Button1.setDisable(true);
             return true;
         }
         //Kontrolli parem-vasak diagonaali
         if (Button13.getText().equals(märk) && Button10.getText().equals(märk) && Button7.getText().equals(märk) && Button4.getText().equals("")) {
             Button4.setText("O");
+            Button4.setDisable(true);
             return true;
         }
         if (Button13.getText().equals(märk) && Button10.getText().equals(märk) && Button7.getText().equals("") && Button4.getText().equals(märk)) {
             Button7.setText("O");
+            Button7.setDisable(true);
             return true;
         }
         if (Button13.getText().equals(märk) && Button10.getText().equals("") && Button7.getText().equals(märk) && Button4.getText().equals(märk)) {
             Button10.setText("O");
+            Button10.setDisable(true);
             return true;
         }
         if (Button13.getText().equals("") && Button10.getText().equals(märk) && Button7.getText().equals(märk) && Button4.getText().equals(märk)) {
             Button13.setText("O");
+            Button13.setDisable(true);
             return true;
         }
         return false;
