@@ -1,8 +1,7 @@
 {
 	"java.project.sourcePaths": [
 		"kirsing_8/src",
-		"kirsing_kodu_6/src",
-		"."
+		"kirsing_kodu_6/src"
 	],
 	"java.project.outputPath": "bin",
 	"java.project.referencedLibraries": [
