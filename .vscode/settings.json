@@ -2,7 +2,8 @@
 	"java.project.sourcePaths": [
 		"kirsing_8/src",
 		"kirsing_kodu_6/src",
-		"."
+		".",
+		"KT2"
 	],
 	"java.project.outputPath": "bin",
 	"java.project.referencedLibraries": [
