@@ -14,18 +14,13 @@ public class Juurikas {
     }
 
     public void lisa(String nimi, int kogus) {
-        if (this.nimi.equals(nimi)) {
-            this.kogus += kogus;
-        }
+        if (this.nimi.equals(nimi)) this.kogus += kogus;
     }
 
     public void eemalda(String nimi, int kogus) {
         if (this.nimi.equals(nimi)) {
-            if (this.kogus >= kogus) {
-                this.kogus -= kogus;
-            } else {
-                this.kogus = 0;
-            }
+            if (this.kogus >= kogus) this.kogus -= kogus;
+            else this.kogus = 0;
         }
     }
 
@@ -35,33 +30,25 @@ public class Juurikas {
         Juurikas sibul = new Juurikas("sibul", 3);
         Juurikas redis = new Juurikas("redis", 2);
         Juurikas tomat = new Juurikas("tomat", 4);
-
         List<Juurikas> juurviljad = new ArrayList<>();
         juurviljad.add(porgand);
         juurviljad.add(kartul);
         juurviljad.add(sibul);
         juurviljad.add(redis);
         juurviljad.add(tomat);
-
         porgand.lisa("porgand", 10);
         kartul.lisa("kartul", 5);
         sibul.lisa("sibul", 8);
         redis.lisa("redis", 3);
         tomat.lisa("tomat", 2);
-
         porgand.eemalda("porgand", 5);
         kartul.eemalda("kartul", 10);
         sibul.eemalda("sibul", 3);
         redis.eemalda("redis", 5);
         tomat.eemalda("tomat", 1);
-
-        Juurikas pikimaNimegaJuurviljaKogus = juurviljad.stream()
-                .max(Comparator.comparing(j -> j.nimi.length()))
-                .orElse(null);
-
+        Juurikas pikimaNimegaJuurviljaKogus = juurviljad.stream().max(Comparator.comparing(j -> j.nimi.length())).orElse(null);
         if (pikimaNimegaJuurviljaKogus != null) {
-            System.out.println("Pikima nimega juurvili on " + pikimaNimegaJuurviljaKogus.nimi
-                    + " kogusega " + pikimaNimegaJuurviljaKogus.kogus);
+            System.out.println("Pikima nimega juurvili on " + pikimaNimegaJuurviljaKogus.nimi + " kogusega " + pikimaNimegaJuurviljaKogus.kogus);
         }
     }
 }
